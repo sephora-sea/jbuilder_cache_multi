@@ -50,7 +50,7 @@ JbuilderTemplate.class_eval do
 
     collection.inject({}) do |result, item|
       item_key = key.respond_to?(:call) ? key.call(item) : key
-      cache_key = item_key ? [item_key, item] : item
+      cache_key = item_key ? [item_key, item.cache_key] : item
       result[_cache_key_fetch_multi(cache_key, options)] = item
       result
     end
